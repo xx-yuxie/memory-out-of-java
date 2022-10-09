@@ -79,7 +79,7 @@ public final class ClassLoaderLeakExample {
       super(ClassLoaderLeakExample.class.getClassLoader());
     }
     
-    @Override
+    @Override //破坏了双亲委派机制
     protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
       // 如果不是当前类那么就用父类加载器进行加载
       if (!LoadedInChildClassLoader.class.getName().equals(name)) {
